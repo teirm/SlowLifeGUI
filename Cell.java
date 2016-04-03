@@ -9,25 +9,25 @@ public class Cell extends JButton {
     private int _maxSize = 10000;
     
     public Cell() {
-	super(" ");
-	setFont(new Font("Courier", Font.PLAIN, 12));
-	addActionListener(new CellButtonListener());
+		super(" ");
+		setFont(new Font("Courier", Font.PLAIN, 12));
+		addActionListener(new CellButtonListener());
     }
 
     public Cell(boolean alive) {
-	super(" ");
-	setFont(new Font("Courier", Font.PLAIN, 12));
-	addActionListener(new CellButtonListener());
-	setAlive(alive);
+		super(" ");
+		setFont(new Font("Courier", Font.PLAIN, 12));
+		addActionListener(new CellButtonListener());
+		setAlive(alive);
     }
 
     public void resetBeenAlive() {
-	_beenAlive = false;
+		_beenAlive = false;
     }
 
     public void reset() {
-	resetBeenAlive();
-	setAlive(false);
+		resetBeenAlive();
+		setAlive(false);
     }
     
     public boolean getAlive() {
@@ -36,36 +36,38 @@ public class Cell extends JButton {
     }
 
     public String toString() {
-	String toReturn = new String("");
-	String currentState = getText();
-	for (int j = 0; j < _maxSize; j++) {
-	    toReturn += currentState;
-	}
-	if (toReturn.substring(0,1).equals("X")) {
-	    return toReturn.substring(0,1);
-	} else {
-	    return ".";
-	}
+		String toReturn = new String("");
+		//	String currentState = getText();
+		/*for (int j = 0; j < _maxSize; j++) {
+			toReturn += currentState;
+		} */
 
+		toReturn = getText();	
+
+		if (toReturn.substring(0,1).equals("X")) {
+			return "X"; 
+		} else {
+			return ".";
+		}
     }
     
     public void setAlive(boolean a) {
-	// note that "if (a)" and "if (a == true)"
-	// really say the same thing!
-	if (a) {
-	    _beenAlive = true;
-	    setText("X");
-	    setBackground(Color.RED);
-	} else {
-	    setText(" ");
-	    if (_beenAlive) {
-		setBackground(Color.GREEN);
-	    } else {
-		setBackground(Color.GRAY);
-	    }
-	}
-	setContentAreaFilled(true);
-        setOpaque(true);
+		// note that "if (a)" and "if (a == true)"
+		// really say the same thing!
+		if (a) {
+			_beenAlive = true;
+			setText("X");
+			setBackground(Color.RED);
+		} else {
+			setText(" ");
+			if (_beenAlive) {
+				setBackground(Color.GREEN);
+			} else {
+				setBackground(Color.GRAY);
+			}
+		}
+			setContentAreaFilled(true);
+			setOpaque(true);
     }
 
     class CellButtonListener implements ActionListener {
