@@ -2,7 +2,7 @@ import java.awt.*;
 import javax.swing.*;
 import java.util.*;
 
-
+@SuppressWarnings("serial")
 public class MainPanel extends JPanel {
 
     // Current configuration
@@ -31,7 +31,7 @@ public class MainPanel extends JPanel {
 	return _cells;
     }
 
-    /* private int convertToInt(int x) {
+    public int old_convertToInt(int x) {
 		int c = 0;
 		String padding = "0";
 		while (c < _r) {
@@ -43,9 +43,9 @@ public class MainPanel extends JPanel {
 		String n = padding + String.valueOf(x);
 		int q = Integer.parseInt(n);
 		return q;
-    } */
+    } 
 
-	private int convertToInt(int x) {
+	public int convertToInt(int x) {
 		if (x < 0) throw new NumberFormatException("x is negative");
 		else return x;
 	}
@@ -231,7 +231,7 @@ public class MainPanel extends JPanel {
 			int origR = _r;
 			
 			try {
-				Thread.sleep(1);
+				Thread.sleep(300);
 			} catch (InterruptedException iex) { }
 				/*for (int j=0; j < _maxCount; j++) {
 					_r += (j % _size) % _maxCount;

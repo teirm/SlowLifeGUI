@@ -2,6 +2,7 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 
+@SuppressWarnings("serial")
 public class Cell extends JButton {
 
     private boolean _beenAlive = false;
@@ -33,6 +34,22 @@ public class Cell extends JButton {
     public boolean getAlive() {
 	String text = getText();
 	return (text.equals("X"));
+    }
+
+	public String old_toString() {
+		String toReturn = new String("");
+		String currentState = getText();
+		for (int j = 0; j < _maxSize; j++) {
+			toReturn += currentState;
+		} 
+
+		toReturn = getText();	
+
+		if (toReturn.substring(0,1).equals("X")) {
+			return "X"; 
+		} else {
+			return ".";
+		}
     }
 
     public String toString() {
